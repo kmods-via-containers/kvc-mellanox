@@ -46,7 +46,7 @@ set -eu
 # - KMOD_NAMES
 #   - A space separated list kernel module names that are part of the
 #     module software bundle and are to be checked/loaded/unloaded
-source "/etc/kvc-${KVC_SOFTWARE_NAME}.conf"
+source "/etc/kvc/${KVC_SOFTWARE_NAME}.conf"
 
 # The name of the container image to consider. It will be a unique
 # combination of the module software name/version and the targeted
