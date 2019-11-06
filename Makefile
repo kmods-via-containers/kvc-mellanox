@@ -25,9 +25,9 @@ USERSPACE_TOOLS= \
 	show_irq_affinity_hints.sh
 
 install:
-	sudo install -v -m 644 mellanox-lib.sh $(DESTDIR)/lib/kvc/
-	sudo install -v -m 644 mellanox.conf $(CONFDIR)/kvc/
-	sudo install -v -m 755 mellanox-wrapper.sh $(DESTDIR)/lib/kvc/
+	install -v -m 644 mellanox-lib.sh $(DESTDIR)/lib/kvc/
+	install -v -m 644 mellanox.conf $(CONFDIR)/kvc/
+	install -v -m 755 mellanox-wrapper.sh $(DESTDIR)/lib/kvc/
 	for tool in $(USERSPACE_TOOLS); do \
-		sudo ln -sf ../lib/kvc/mellanox-wrapper.sh $(DESTDIR)/bin/$${tool}; \
+		ln -sf ../lib/kvc/mellanox-wrapper.sh $(DESTDIR)/bin/$${tool}; \
 	done
