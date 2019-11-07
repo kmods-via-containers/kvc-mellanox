@@ -6,8 +6,11 @@ RUN yum update -y
 
 # Expecting kmod software version as an input to the build
 ARG KMODVER
-# Grab the software from upstream
-ADD https://www.mellanox.com/downloads/ofed/MLNX_EN-${KMODVER}/mlnx-en-${KMODVER}-rhel8.0-x86_64.tgz ./file.tar.gz
+# Grab the software from upstream. The URL is comprised of the
+# version of the kmod as well as the version number of RHEL.
+# For example: mlnx-en-4.7-1.0.0.1-rhel8.1-x86_64.tgz
+RUN source /etc/os-release && \
+    curl -L https://www.mellanox.com/downloads/ofed/MLNX_EN-${KMODVER}/mlnx-en-${KMODVER}-rhel${VERSION_ID}-x86_64.tgz > ./file.tar.gz
 RUN tar -x --strip-components=2 -f ./file.tar.gz
 
 # Expecting kernel version as an input to the build
